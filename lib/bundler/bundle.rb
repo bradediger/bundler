@@ -208,7 +208,7 @@ module Bundler
         installer = Gem::Installer.allocate
         installer.instance_eval do
           @spec     = spec
-          @bin_dir  = bin_dir
+          @bin_dir  = bin_dir.to_s
           @gem_dir  = gems_path.join(spec.full_name)
           @gem_home = path
           @wrappers = true
@@ -233,7 +233,7 @@ module Bundler
         :ignore_dependencies => true,
         :env_shebang         => true,
         :wrappers            => true,
-        :bin_dir             => bindir
+        :bin_dir             => bindir.to_s
       ))
       installer.install
     rescue Gem::InstallError
